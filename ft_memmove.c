@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/04 17:22:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/08/04 17:22:57 by lpassera         ###   ########.fr       */
+/*   Created: 2020/08/04 17:55:12 by lpassera          #+#    #+#             */
+/*   Updated: 2020/08/04 17:55:13 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t index;
+	size_t			index;
+	unsigned char	*ptr_src;
+	unsigned char	*ptr_dst;
 
 	index = 0;
-	while (index < n)
+	ptr_src = (unsigned char *)src;
+	ptr_dst = (unsigned char *)dst;
+	if (src > dst)
 	{
-		*(char *)(dst + index) = *(char *)(src + index);
-		if (*(unsigned char *)(src + index) == (unsigned char)c)
-			return ((void *)(dst + index + 1));
-		index++;
+		while (index < len)
+		{
+			ptr_dst[index] = ptr_src[index];
+			index++;
+		}
 	}
-	return (NULL);
+	else
+	{
+		while (index < len)
+		{
+			ptr_dst[len - index - 1] = ptr_src[len - index - 1];
+			index++;
+		}
+	}
+	return (dst);
 }
