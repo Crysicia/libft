@@ -21,6 +21,7 @@ SRCS 	= ft_memset.c \
 		  ft_memchr.c \
 		  ft_memcmp.c \
 		  ft_strlen.c \
+		  ft_isalpha.c \
 
 OBJS 	= $(SRCS:.c=.o)
 HEADERS = includes
