@@ -31,6 +31,8 @@ char	*ft_strdup(const char *s1);
 
 /* 42 functions */
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+
 /* Custom functions */
 int		ft_isspace(int c);
 
