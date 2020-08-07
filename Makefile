@@ -26,6 +26,7 @@ SRCS 	= ft_memset.c \
 		  ft_isalnum.c \
 		  ft_isascii.c \
 		  ft_isprint.c \
+		  ft_isspace.c \
 		  ft_toupper.c \
 		  ft_tolower.c \
 		  ft_strchr.c \
@@ -37,7 +38,6 @@ SRCS 	= ft_memset.c \
 		  ft_atoi.c \
 		  ft_calloc.c \
 		  ft_strdup.c \
-		  ft_isspace.c \
 
 OBJS 	= $(SRCS:.c=.o)
 HEADERS = includes
