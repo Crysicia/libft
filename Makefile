@@ -57,25 +57,21 @@ BONUS_SRCS	= ft_lstnew.c \
 			  ft_lstdelone.c \
 			  ft_lstclear.c \
 			  ft_lstiter.c \
-			  
-# 			  ft_lstmap.c \
+			  ft_lstmap.c \
 
 OBJS 		= $(SRCS:.c=.o)
 BONUS_OBJS 	= $(BONUS_SRCS:.c=.o)
-HEADERS 	= includes
 
-all: bonus
+all: $(NAME)
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $@ -I$(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
 	
 clean:
-	rm -f $(OBJS)
-	rm -f $(BONUS_OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
@@ -84,7 +80,6 @@ re: fclean all
 
 bonus: $(NAME) $(BONUS_OBJS)
 	ar rc $(NAME) $(BONUS_OBJS)
-	ranlib $(NAME)
 
 norme:
 	~/.norminette/norminette.rb $(SRCS)
