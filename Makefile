@@ -10,9 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
+OS			:=	$(shell uname -s)
+
+AR 			= ar rc
 CC			= gcc
 CFLAGS 		= -Wall -Wextra -Werror
-NAME 		= libft.a
+NORMINETTE  = ~/.norminette/norminette.rb
+RM 			= rm -f
+NAME 		= $(STATIC_NAME)
+STATIC_NAME = libft.a
+DYNAMIC_NAME = libft.so
+
+ifeq ($(OS), Linux)
+	CFLAGS += -fPIC
+endif
+
 SRCS 		= ft_memset.c \
 			  ft_bzero.c \
 			  ft_memcpy.c \
@@ -67,21 +79,31 @@ all: $(NAME)
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
+ifeq ($(OS), Linux)
+so: $(OBJS)
+	$(CC) $(OBJS) -shared -o $(DYNAMIC_NAME)
+
+bonus: $(NAME) $(OBJS) $(BONUS_OBJS)
+	$(AR) $(NAME) $(BONUS_OBJS)
+	$(CC) $(OBJS) $(BONUS_OBJS) -shared -o $(DYNAMIC_NAME)
+else
+bonus: $(NAME) $(BONUS_OBJS)
+	$(AR) $(NAME) $(BONUS_OBJS)
+endif
+
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	
+	$(AR) $(NAME) $(OBJS)
+
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
+	$(RM) $(DYNAMIC_NAME)
+
+norme:
+	$(NORMINETTE) $(SRCS) $(BONUS_SRCS)
 
 re: fclean all
 
-bonus: $(NAME) $(BONUS_OBJS)
-	ar rc $(NAME) $(BONUS_OBJS)
-
-norme:
-	~/.norminette/norminette.rb $(SRCS)
-
-.PHONY: norme
+.PHONY: all bonus bonus_so clean fclean norme so
