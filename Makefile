@@ -10,21 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-OS			:=	$(shell uname -s)
-
 AR 			= ar rc
 CC			= gcc
 CFLAGS 		= -Wall -Wextra -Werror
 NORMINETTE  = ~/.norminette/norminette.rb
 RM 			= rm -f
-NAME 		= $(STATIC_NAME)
+NAME 		= libft.a
 HEADER 		= libft.h
-STATIC_NAME = libft.a
-DYNAMIC_NAME = libft.so
-
-ifeq ($(OS), Linux)
-	CFLAGS += -fPIC
-endif
 
 SRCS 		= ft_memset.c \
 			  ft_bzero.c \
@@ -80,17 +72,8 @@ all: $(NAME)
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
-ifeq ($(OS), Linux)
-so: $(OBJS)
-	$(CC) $(OBJS) -shared -o $(DYNAMIC_NAME)
-
-bonus: $(NAME) $(OBJS) $(BONUS_OBJS)
-	$(AR) $(NAME) $(BONUS_OBJS)
-	$(CC) $(OBJS) $(BONUS_OBJS) -shared -o $(DYNAMIC_NAME)
-else
 bonus: $(NAME) $(BONUS_OBJS)
 	$(AR) $(NAME) $(BONUS_OBJS)
-endif
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
@@ -100,11 +83,10 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(DYNAMIC_NAME)
 
 norme:
 	$(NORMINETTE) $(SRCS) $(BONUS_SRCS) $(HEADER)
 
 re: fclean all
 
-.PHONY: all bonus bonus_so clean fclean norme so
+.PHONY: all bonus clean fclean norme
