@@ -18,6 +18,7 @@ CFLAGS 		= -Wall -Wextra -Werror
 NORMINETTE  = ~/.norminette/norminette.rb
 RM 			= rm -f
 NAME 		= $(STATIC_NAME)
+HEADER 		= libft.h
 STATIC_NAME = libft.a
 DYNAMIC_NAME = libft.so
 
@@ -102,7 +103,7 @@ fclean: clean
 	$(RM) $(DYNAMIC_NAME)
 
 norme:
-	$(NORMINETTE) $(SRCS) $(BONUS_SRCS)
+	$(NORMINETTE) $(SRCS) $(BONUS_SRCS) $(HEADER)
 
 re: fclean all
 
