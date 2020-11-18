@@ -12,7 +12,12 @@
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+static int		ft_isspace(int c)
+{
+	return ((c >= 9 && 13 >= c) || c == 32);
+}
+
+int				ft_atoi(const char *str)
 {
 	long	total;
 	int		sign;
