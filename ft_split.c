@@ -43,7 +43,7 @@ static size_t	ft_word_len(char const *str, char sep)
 	return (length);
 }
 
-static void		ft_free_matrix(char **matrix, size_t size)
+static void		*ft_free_matrix(char **matrix, size_t size)
 {
 	size_t index;
 
@@ -54,6 +54,7 @@ static void		ft_free_matrix(char **matrix, size_t size)
 		index++;
 	}
 	free(matrix);
+	return (NULL);
 }
 
 char			**ft_split(char const *s, char c)
@@ -65,20 +66,18 @@ char			**ft_split(char const *s, char c)
 
 	wordcount = 0;
 	index = 0;
-	arr_i = -1;
+	arr_i = 0;
 	wordcount = ft_count_words(s, c);
-	if (!s || !c || !(arr = malloc((wordcount + 1) * sizeof(char *))))
+	if (!(arr = malloc((wordcount + 1) * sizeof(char *))))
 		return (NULL);
-	while (++arr_i < wordcount)
+	while (arr_i < wordcount)
 	{
 		while (s[index] == c)
 			index++;
 		if (!(arr[arr_i] = ft_substr(s, index, ft_word_len(&s[index], c))))
-		{
-			ft_free_matrix(arr, arr_i + 1);
-			break ;
-		}
+			return (ft_free_matrix(arr, arr_i + 1));
 		index += ft_word_len(&s[index], c);
+		arr_i++;
 	}
 	arr[arr_i] = NULL;
 	return (arr);
