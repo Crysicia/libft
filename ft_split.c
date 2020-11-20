@@ -19,7 +19,7 @@ static size_t	ft_count_words(char const *str, char sep)
 
 	index = 0;
 	count = 0;
-	if (!str || !sep)
+	if (!str)
 		return (0);
 	while (str[index])
 	{
