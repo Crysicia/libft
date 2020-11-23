@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 13:18:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/08/10 13:18:56 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/11/23 18:03:20 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ char			**ft_split(char const *s, char c)
 	wordcount = 0;
 	index = 0;
 	arr_i = 0;
+	if (!s)
+		return (NULL);
 	wordcount = ft_count_words(s, c);
 	if (!(arr = malloc((wordcount + 1) * sizeof(char *))))
 		return (NULL);
