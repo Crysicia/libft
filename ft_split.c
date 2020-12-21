@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 13:18:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/11/23 18:03:20 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/21 08:55:40 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,6 @@ static size_t	ft_word_len(char const *str, char sep)
 	return (length);
 }
 
-static void		*ft_free_matrix(char **matrix, size_t size)
-{
-	size_t index;
-
-	index = 0;
-	while (index < size)
-	{
-		free(matrix[index]);
-		index++;
-	}
-	free(matrix);
-	return (NULL);
-}
-
 char			**ft_split(char const *s, char c)
 {
 	size_t	wordcount;
@@ -77,7 +63,7 @@ char			**ft_split(char const *s, char c)
 		while (s[index] == c)
 			index++;
 		if (!(arr[arr_i] = ft_substr(s, index, ft_word_len(&s[index], c))))
-			return (ft_free_matrix(arr, arr_i + 1));
+			return (ft_free_matrix((void **)arr, arr_i + 1));
 		index += ft_word_len(&s[index], c);
 		arr_i++;
 	}

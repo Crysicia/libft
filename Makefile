@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lpassera <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/15 11:22:32 by lpassera          #+#    #+#              #
-#    Updated: 2020/07/15 19:06:00 by lpassera         ###   ########.fr        #
+#    Updated: 2020/12/21 09:13:00 by lpassera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,11 @@ SRCS 		= ft_memset.c \
 			  ft_putstr_fd.c \
 			  ft_putendl_fd.c \
 			  ft_putnbr_fd.c \
+			  ft_max.c \
+			  ft_min.c \
+			  ft_strjoin_free.c \
+			  ft_free_matrix.c \
+			  ft_strcchr.c \
 
 BONUS_SRCS	= ft_lstnew.c \
 			  ft_lstadd_front.c \

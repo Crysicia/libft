@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/13 01:17:22 by lpassera          #+#    #+#             */
-/*   Updated: 2020/08/13 01:18:16 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/21 09:10:18 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,14 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst,
 								void *(*f)(void *), void (*del)(void *));
+
+/*
+** Custom functions
+*/
+int					ft_max(int a, int b);
+int					ft_min(int a, int b);
+char				*ft_strjoin_free(char const *s1, char const *s2);
+void				*ft_free_matrix(void **matrix, size_t size);
+char				*ft_strcchr(const char *s, int c);
 
 #endif
