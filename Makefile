@@ -6,7 +6,7 @@
 #    By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/15 11:22:32 by lpassera          #+#    #+#              #
-#    Updated: 2021/01/25 15:41:42 by lpassera         ###   ########.fr        #
+#    Updated: 2021/01/25 18:29:07 by lpassera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRCS 		= ft_memset.c \
 			  ft_free_matrix.c \
 			  ft_strcchr.c \
 			  ft_split_set.c \
+			  ft_in_range.c \
 
 BONUS_SRCS	= ft_lstnew.c \
 			  ft_lstadd_front.c \

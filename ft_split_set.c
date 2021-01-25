@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 15:32:37 by lpassera          #+#    #+#             */
-/*   Updated: 2021/01/25 15:42:04 by lpassera         ###   ########.fr       */
+/*   Updated: 2021/01/25 19:19:07 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static size_t	ft_count_words(char const *str, char *set)
 		return (0);
 	while (str[index])
 	{
-		while (ft_strchr(set, str[index]))
+		while (ft_strchr(set, str[index]) && str[index])
 			index++;
-		if (!ft_strchr(set, str[index])&& str[index])
+		if (!ft_strchr(set, str[index]) && str[index])
 			count++;
 		while (!ft_strchr(set, str[index]) && str[index])
 			index++;
